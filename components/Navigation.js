@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, GraduationCap, Briefcase, Plane, Users, MessageSquare } from 'lucide-react';
 
@@ -45,15 +44,11 @@ export function Navigation() {
         <div className="flex justify-between h-16 lg:h-20">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="relative w-[120px] h-[60px] lg:w-[160px] lg:h-[80px]">
-                <Image
-                  src="/images/bhuru-logo.png"
-                  alt="Bhuru Consultancy"
-                  fill
-                  priority
-                  className="object-contain"
-                />
-              </div>
+              <img
+                src="/images/bhuru-logo.png"
+                alt="Bhuru Consultancy"
+                className="w-[120px] h-[60px] lg:w-[160px] lg:h-[80px] object-contain"
+              />
             </Link>
           </div>
 
