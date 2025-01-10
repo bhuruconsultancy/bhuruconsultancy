@@ -42,12 +42,12 @@ export function Navigation() {
     <nav className="bg-white shadow-lg fixed w-full z-50">
       <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop Navigation */}
-        <div className="flex justify-between h-24">
+        <div className="flex justify-between h-20 lg:h-24">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="relative w-[200px] h-[100px]">
+              <div className="relative w-[150px] h-[75px] lg:w-[180px] lg:h-[90px]">
                 <Image
-                  src="/bhuru-logo.png"
+                  src="/images/bhuru-logo.png"
                   alt="Bhuru Consultancy"
                   fill
                   priority
@@ -57,14 +57,14 @@ export function Navigation() {
             </Link>
           </div>
 
-          {/* Updated breakpoints and spacing for tablet */}
+          {/* Desktop Menu */}
           <div className="hidden lg:flex items-center">
-            <div className="flex space-x-8 xl:space-x-12">
+            <div className="flex space-x-4 xl:space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center space-x-2 text-base xl:text-lg whitespace-nowrap transition-colors ${
+                  className={`flex items-center space-x-1 text-sm xl:text-base whitespace-nowrap transition-colors ${
                     pathname === item.href
                       ? 'text-[#8B1818] font-semibold border-b-2 border-[#8B1818]'
                       : 'text-gray-700 hover:text-[#8B1818]'
@@ -77,7 +77,7 @@ export function Navigation() {
             </div>
           </div>
 
-          {/* Show mobile menu on tablet and smaller screens */}
+          {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center">
             <button
               ref={menuButtonRef}
