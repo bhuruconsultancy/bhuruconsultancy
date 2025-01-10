@@ -1,12 +1,15 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, BookOpen, Briefcase, Globe, Palette, Building } from 'lucide-react';
 
 export default function ConsultancyServices() {
+  const router = useRouter();
+  
   const services = [
     {
       title: "Career and Immigration Services",
@@ -60,7 +63,7 @@ export default function ConsultancyServices() {
     {
       title: "Business Setup Services",
       description: "Comprehensive business establishment and management support",
-      image: "https://images.unsplash.com/photo-1664575602554-2087b04935a5?q=80&w=2070",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070",
       features: [
         "Company and Tax Registration",
         "Business Consultation",
@@ -72,7 +75,7 @@ export default function ConsultancyServices() {
   ];
 
   const handleEnquire = (service) => {
-    window.location.href = `/enquire?subject=${encodeURIComponent(`Enquiry about ${service}`)}`;
+    router.push(`/enquire?subject=${encodeURIComponent(`Enquiry about ${service}`)}`);
   };
 
   return (

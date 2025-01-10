@@ -28,13 +28,13 @@ export function Navigation() {
   }, [isOpen]);
 
   const navItems = [
-    { href: '/about', label: 'About Us', icon: <Users className="w-4 h-4" /> },
-    { href: '/study-abroad', label: 'Study Abroad', icon: <GraduationCap className="w-4 h-4" /> },
-    { href: '/consultancy-services', label: 'Consultancy Services', icon: <Briefcase className="w-4 h-4" /> },
-    { href: '/holidays', label: 'Holidays & Travels', icon: <Plane className="w-4 h-4" /> },
-    { href: '/testimonials', label: 'Testimonials', icon: <MessageSquare className="w-4 h-4" /> },
-    { href: '/team', label: 'Our Team', icon: <Users className="w-4 h-4" /> },
-    { href: '/enquire', label: 'Enquire', icon: <MessageSquare className="w-4 h-4" /> },
+    { href: '/about', label: 'About Us', icon: <Users className="w-5 h-5" /> },
+    { href: '/study-abroad', label: 'Study Abroad', icon: <GraduationCap className="w-5 h-5" /> },
+    { href: '/consultancy-services', label: 'Consultancy Services', icon: <Briefcase className="w-5 h-5" /> },
+    { href: '/holidays', label: 'Holidays & Travels', icon: <Plane className="w-5 h-5" /> },
+    { href: '/testimonials', label: 'Testimonials', icon: <MessageSquare className="w-5 h-5" /> },
+    { href: '/team', label: 'Our Team', icon: <Users className="w-5 h-5" /> },
+    { href: '/enquire', label: 'Enquire', icon: <MessageSquare className="w-5 h-5" /> },
   ];
 
   return (
@@ -45,7 +45,7 @@ export function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
               <img
-                src="images/bhuru-logo.png"
+                src="/images/bhuru-logo.png"
                 alt="Bhuru Consultancy"
                 className="w-[120px] h-[60px] lg:w-[160px] lg:h-[80px] object-contain"
               />
@@ -54,12 +54,12 @@ export function Navigation() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center">
-            <div className="flex space-x-3 xl:space-x-6">
+            <div className="flex space-x-4 xl:space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center space-x-1 text-xs xl:text-sm whitespace-nowrap transition-colors ${
+                  className={`flex items-center space-x-2 text-base xl:text-lg whitespace-nowrap transition-colors ${
                     pathname === item.href
                       ? 'text-[#8B1818] font-semibold border-b-2 border-[#8B1818]'
                       : 'text-gray-700 hover:text-[#8B1818]'
@@ -85,7 +85,7 @@ export function Navigation() {
         </div>
       </div>
 
-      {/* Mobile/Tablet Navigation */}
+      {/* Mobile Navigation */}
       {isOpen && (
         <div className="lg:hidden" ref={mobileMenuRef}>
           <div className="px-4 pt-2 pb-3 space-y-2 bg-white shadow-lg">
@@ -93,7 +93,7 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors text-base ${
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors text-lg ${
                   pathname === item.href
                     ? 'text-[#8B1818] bg-gray-50 font-semibold'
                     : 'text-gray-700 hover:text-[#8B1818] hover:bg-gray-50'

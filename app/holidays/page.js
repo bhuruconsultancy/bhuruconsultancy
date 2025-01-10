@@ -1,12 +1,15 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Plane, MapPin, Calendar, Users, CheckCircle } from 'lucide-react';
 
 export default function Holidays() {
+  const router = useRouter();
+
   const destinations = [
     {
       title: "Explore Zambia",
@@ -62,7 +65,7 @@ export default function Holidays() {
   ];
 
   const handleEnquire = (destination) => {
-    window.location.href = `/enquire?subject=${encodeURIComponent(`Travel Enquiry - ${destination}`)}`;
+    router.push(`/enquire?subject=${encodeURIComponent(`Travel Enquiry - ${destination}`)}`);
   };
 
   return (

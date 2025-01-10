@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,6 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { CheckCircle } from 'lucide-react';
 
 export default function StudyAbroad() {
+  const router = useRouter();
+
   const countries = [
     {
       name: "China",
@@ -147,7 +150,7 @@ export default function StudyAbroad() {
   ];
 
   const handleEnquire = (country, level) => {
-    window.location.href = `/enquire?subject=${encodeURIComponent(`Study in ${country} - ${level}`)}`;
+    router.push(`/enquire?subject=${encodeURIComponent(`Study in ${country} - ${level}`)}`);
   };
 
   return (

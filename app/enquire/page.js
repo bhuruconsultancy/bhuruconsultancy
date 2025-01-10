@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 export default function Enquire() {
   const [formData, setFormData] = useState({
@@ -20,7 +20,6 @@ export default function Enquire() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically handle the form submission
     toast.success('Thank you for your enquiry! We will get back to you soon.');
     setFormData({
       name: '',
@@ -90,14 +89,16 @@ export default function Enquire() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="p-6 text-center card-hover">
-                  <div className="flex justify-center mb-4 text-[#8B1818]">
-                    {info.icon}
+                <Card className="p-8 text-center card-hover">
+                  <div className="flex justify-center mb-6">
+                    <div className="p-4 rounded-full bg-[#8B1818] bg-opacity-10">
+                      <div className="text-[#8B1818]">{info.icon}</div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{info.title}</h3>
+                  <h3 className="text-2xl font-semibold mb-3">{info.title}</h3>
                   <a
                     href={info.link}
-                    className="text-gray-600 hover:text-[#8B1818] transition-colors text-lg"
+                    className="text-gray-600 hover:text-[#8B1818] transition-colors text-lg inline-block"
                   >
                     {info.details}
                   </a>
@@ -111,73 +112,87 @@ export default function Enquire() {
       {/* Enquiry Form */}
       <section className="py-20">
         <div className="max-w-3xl mx-auto px-4">
-          <Card className="p-8">
-            <h2 className="text-3xl font-bold text-center mb-8 gradient-text">
-              Send us a Message
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Name
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number
-                </label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="w-full min-h-[150px]"
-                />
-              </div>
-              <Button
-                type="submit"
-                className="w-full bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg"
-                size="lg"
-              >
-                Send Message
-              </Button>
-            </form>
+          <Card className="p-8 shadow-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl font-bold text-center mb-8 gradient-text">
+                Send us a Message
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium text-gray-700 block">
+                    Full Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full h-12 text-lg transition-all duration-200 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1818] focus:border-[#8B1818] hover:border-[#8B1818]"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-gray-700 block">
+                    Email Address
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full h-12 text-lg transition-all duration-200 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1818] focus:border-[#8B1818] hover:border-[#8B1818]"
+                    placeholder="Enter your email address"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="phone" className="text-sm font-medium text-gray-700 block">
+                    Phone Number
+                  </label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full h-12 text-lg transition-all duration-200 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1818] focus:border-[#8B1818] hover:border-[#8B1818]"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium text-gray-700 block">
+                    Your Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="w-full min-h-[150px] text-lg transition-all duration-200 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1818] focus:border-[#8B1818] hover:border-[#8B1818] resize-y"
+                    placeholder="Tell us about your enquiry..."
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  className="w-full bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg h-14 rounded-lg transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2"
+                >
+                  <Send className="w-5 h-5" />
+                  Send Message
+                </Button>
+              </form>
+            </motion.div>
           </Card>
         </div>
       </section>

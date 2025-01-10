@@ -1,6 +1,18 @@
+'use client';
+
+import Link from 'next/link';
 import { Facebook, Twitter, Linkedin, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 
 export function Footer() {
+  const quickLinks = [
+    { href: '/about', label: 'About Us' },
+    { href: '/study-abroad', label: 'Study Abroad' },
+    { href: '/consultancy-services', label: 'Consultancy Services' },
+    { href: '/holidays', label: 'Holidays & Travels' },
+    { href: '/team', label: 'Our Team' },
+    { href: '/enquire', label: 'Contact Us' }
+  ];
+
   return (
     <footer className="bg-[#1B4965] text-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,12 +27,16 @@ export function Footer() {
           <div className="space-y-6">
             <h4 className="text-2xl font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-4">
-              <li><a href="/about" className="text-lg hover:text-[#E85D5D] transition-colors">About Us</a></li>
-              <li><a href="/study-abroad" className="text-lg hover:text-[#E85D5D] transition-colors">Study Abroad</a></li>
-              <li><a href="/consultancy-services" className="text-lg hover:text-[#E85D5D] transition-colors">Consultancy Services</a></li>
-              <li><a href="/holidays" className="text-lg hover:text-[#E85D5D] transition-colors">Holidays & Travels</a></li>
-              <li><a href="/team" className="text-lg hover:text-[#E85D5D] transition-colors">Our Team</a></li>
-              <li><a href="/enquire" className="text-lg hover:text-[#E85D5D] transition-colors">Contact Us</a></li>
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link 
+                    href={link.href}
+                    className="text-lg hover:text-[#E85D5D] transition-colors inline-block"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
