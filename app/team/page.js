@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
-import { LinkedIn, Mail } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 
 export default function Team() {
   const teamMembers = [
@@ -90,7 +90,7 @@ export default function Team() {
                   <p className="text-lg text-gray-600 mb-6">{teamMembers[0].description}</p>
                   <div className="flex space-x-4">
                     <a href="#" className="text-[#8B1818] hover:text-[#E85D5D] transition-colors">
-                      <LinkedIn className="w-8 h-8" />
+                      <Linkedin className="w-8 h-8" />
                     </a>
                     <a href="mailto:info@bhuruconsultancy.co.zw" className="text-[#8B1818] hover:text-[#E85D5D] transition-colors">
                       <Mail className="w-8 h-8" />
@@ -132,7 +132,7 @@ export default function Team() {
                     <p className="text-gray-600 text-lg">{member.description}</p>
                     <div className="mt-4 flex space-x-4">
                       <a href="#" className="text-[#8B1818] hover:text-[#E85D5D] transition-colors">
-                        <LinkedIn className="w-6 h-6" />
+                        <Linkedin className="w-6 h-6" />
                       </a>
                       <a href={`mailto:${member.name.toLowerCase().replace(' ', '.')}@bhuruconsultancy.co.zw`} className="text-[#8B1818] hover:text-[#E85D5D] transition-colors">
                         <Mail className="w-6 h-6" />
