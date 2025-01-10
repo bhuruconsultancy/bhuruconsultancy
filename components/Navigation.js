@@ -45,7 +45,7 @@ export function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
               <img
-                src="/images/bhuru-logo.png"
+                src="images/bhuru-logo.png"
                 alt="Bhuru Consultancy"
                 className="w-[120px] h-[60px] lg:w-[160px] lg:h-[80px] object-contain"
               />
