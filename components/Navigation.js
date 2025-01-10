@@ -29,23 +29,23 @@ export function Navigation() {
   }, [isOpen]);
 
   const navItems = [
-    { href: '/about', label: 'About Us', icon: <Users className="w-5 h-5" /> },
-    { href: '/study-abroad', label: 'Study Abroad', icon: <GraduationCap className="w-5 h-5" /> },
-    { href: '/consultancy-services', label: 'Consultancy Services', icon: <Briefcase className="w-5 h-5" /> },
-    { href: '/holidays', label: 'Holidays & Travels', icon: <Plane className="w-5 h-5" /> },
-    { href: '/testimonials', label: 'Testimonials', icon: <MessageSquare className="w-5 h-5" /> },
-    { href: '/team', label: 'Our Team', icon: <Users className="w-5 h-5" /> },
-    { href: '/enquire', label: 'Enquire', icon: <MessageSquare className="w-5 h-5" /> },
+    { href: '/about', label: 'About Us', icon: <Users className="w-4 h-4" /> },
+    { href: '/study-abroad', label: 'Study Abroad', icon: <GraduationCap className="w-4 h-4" /> },
+    { href: '/consultancy-services', label: 'Consultancy Services', icon: <Briefcase className="w-4 h-4" /> },
+    { href: '/holidays', label: 'Holidays & Travels', icon: <Plane className="w-4 h-4" /> },
+    { href: '/testimonials', label: 'Testimonials', icon: <MessageSquare className="w-4 h-4" /> },
+    { href: '/team', label: 'Our Team', icon: <Users className="w-4 h-4" /> },
+    { href: '/enquire', label: 'Enquire', icon: <MessageSquare className="w-4 h-4" /> },
   ];
 
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50">
-      <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[2000px] mx-auto px-2 sm:px-4">
         {/* Desktop Navigation */}
-        <div className="flex justify-between h-20 lg:h-24">
+        <div className="flex justify-between h-16 lg:h-20">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="relative w-[150px] h-[75px] lg:w-[180px] lg:h-[90px]">
+              <div className="relative w-[120px] h-[60px] lg:w-[160px] lg:h-[80px]">
                 <Image
                   src="/images/bhuru-logo.png"
                   alt="Bhuru Consultancy"
@@ -59,12 +59,12 @@ export function Navigation() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center">
-            <div className="flex space-x-4 xl:space-x-8">
+            <div className="flex space-x-3 xl:space-x-6">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center space-x-1 text-sm xl:text-base whitespace-nowrap transition-colors ${
+                  className={`flex items-center space-x-1 text-xs xl:text-sm whitespace-nowrap transition-colors ${
                     pathname === item.href
                       ? 'text-[#8B1818] font-semibold border-b-2 border-[#8B1818]'
                       : 'text-gray-700 hover:text-[#8B1818]'
@@ -84,7 +84,7 @@ export function Navigation() {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-[#8B1818]"
             >
-              {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -98,7 +98,7 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors text-lg ${
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors text-base ${
                   pathname === item.href
                     ? 'text-[#8B1818] bg-gray-50 font-semibold'
                     : 'text-gray-700 hover:text-[#8B1818] hover:bg-gray-50'
