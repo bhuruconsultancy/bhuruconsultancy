@@ -45,14 +45,15 @@ export function Navigation() {
         <div className="flex justify-between h-24">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <Image
-                src="/images/bhuru-logo.png"
-                alt="Bhuru Consultancy"
-                width={180}
-                height={90}
-                priority
-                className="object-contain"
-              />
+              <div className="relative w-[200px] h-[100px]">
+                <Image
+                  src="/bhuru-logo.png"
+                  alt="Bhuru Consultancy"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </div>
             </Link>
           </div>
 
