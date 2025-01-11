@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, GraduationCap, Briefcase, Plane, Users, MessageSquare } from 'lucide-react';
 
@@ -39,27 +40,31 @@ export function Navigation() {
 
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50">
-      <div className="max-w-[2000px] mx-auto px-2 sm:px-4">
+      <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop Navigation */}
-        <div className="flex justify-between h-16 lg:h-20">
+        <div className="flex justify-between h-24">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <img
-                src="/images/bhuru-logo.png"
-                alt="Bhuru Consultancy"
-                className="w-[120px] h-[60px] lg:w-[160px] lg:h-[80px] object-contain"
-              />
+              <div className="relative w-[200px] h-[100px]">
+                <Image
+                  src="/images/bhuru logo.png"
+                  alt="Bhuru Consultancy"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </div>
             </Link>
           </div>
 
-          {/* Desktop Menu */}
+          {/* Updated font sizes for larger screens */}
           <div className="hidden lg:flex items-center">
-            <div className="flex space-x-4 xl:space-x-8">
+            <div className="flex space-x-8 xl:space-x-12">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center space-x-2 text-base xl:text-lg whitespace-nowrap transition-colors ${
+                  className={`flex items-center space-x-2 text-sm xl:text-base whitespace-nowrap transition-colors ${
                     pathname === item.href
                       ? 'text-[#8B1818] font-semibold border-b-2 border-[#8B1818]'
                       : 'text-gray-700 hover:text-[#8B1818]'
@@ -72,20 +77,19 @@ export function Navigation() {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center">
             <button
               ref={menuButtonRef}
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-[#8B1818]"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile/Tablet Navigation */}
       {isOpen && (
         <div className="lg:hidden" ref={mobileMenuRef}>
           <div className="px-4 pt-2 pb-3 space-y-2 bg-white shadow-lg">
