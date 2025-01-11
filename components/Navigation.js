@@ -42,12 +42,12 @@ export function Navigation() {
     <nav className="bg-white shadow-lg fixed w-full z-50">
       <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop Navigation */}
-        <div className="flex justify-between h-24">
+        <div className="flex justify-between h-16 lg:h-20">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="relative w-[200px] h-[100px]">
+              <div className="relative w-[120px] h-[60px] lg:w-[160px] lg:h-[80px]">
                 <Image
-                  src="/images/bhuru logo.png"
+                  src="/images/bhuru-logo.png"
                   alt="Bhuru Consultancy"
                   fill
                   priority
