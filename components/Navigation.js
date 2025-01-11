@@ -59,12 +59,12 @@ export function Navigation() {
 
           {/* Updated font sizes for larger screens */}
           <div className="hidden lg:flex items-center">
-            <div className="flex space-x-8 xl:space-x-12">
+            <div className="flex space-x-8 xl:space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center space-x-2 text-sm xl:text-base whitespace-nowrap transition-colors ${
+                  className={`flex items-center space-x-2 text-xs lg:text-sm xl:text-[13px] whitespace-nowrap transition-colors ${
                     pathname === item.href
                       ? 'text-[#8B1818] font-semibold border-b-2 border-[#8B1818]'
                       : 'text-gray-700 hover:text-[#8B1818]'
