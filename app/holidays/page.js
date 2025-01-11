@@ -28,7 +28,7 @@ export default function Holidays() {
     {
       title: "European Adventure",
       description: "Multi-city tours across Europe's most beautiful destinations",
-      image: "https://images.unsplash.com/photo-1493707553966-283afac8c358?q=80&w=2070",
+      image: "https://images.unsplash.com/photo-1491557345352-5929e343eb89?q=80&w=2070",
       duration: "14-21 days",
       highlights: ["Multiple Countries", "Guided Tours", "Cultural Experiences"]
     },
@@ -101,19 +101,24 @@ export default function Holidays() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="h-full"
               >
-                <Card className="p-6 text-center h-full card-hover">
-                  <div className="flex justify-center mb-4">
-                    {service.icon}
+                <Card className="p-6 text-center h-full flex flex-col card-hover">
+                  <div className="flex-grow flex flex-col items-center justify-between">
+                    <div>
+                      <div className="flex justify-center mb-4">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-2xl font-semibold mb-2">{service.title}</h3>
+                      <p className="text-lg text-gray-600 mb-6">{service.description}</p>
+                    </div>
+                    <Button 
+                      className="bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg w-full"
+                      onClick={() => handleEnquire(service.title)}
+                    >
+                      Enquire Now
+                    </Button>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-lg text-gray-600 mb-6">{service.description}</p>
-                  <Button 
-                    className="bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg"
-                    onClick={() => handleEnquire(service.title)}
-                  >
-                    Enquire Now
-                  </Button>
                 </Card>
               </motion.div>
             ))}
@@ -134,8 +139,9 @@ export default function Holidays() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="h-full"
               >
-                <Card className="overflow-hidden card-hover">
+                <Card className="overflow-hidden h-full flex flex-col card-hover">
                   <div className="relative h-64">
                     <Image
                       src={destination.image}
@@ -144,24 +150,26 @@ export default function Holidays() {
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-3xl font-bold mb-2">{destination.title}</h3>
-                    <p className="text-xl text-gray-600 mb-4">{destination.description}</p>
-                    <div className="mb-4">
-                      <span className="text-lg font-semibold text-[#8B1818]">
-                        Duration: {destination.duration}
-                      </span>
-                    </div>
-                    <div className="space-y-2">
-                      {destination.highlights.map((highlight, i) => (
-                        <div key={i} className="flex items-center text-lg text-gray-600">
-                          <CheckCircle className="w-5 h-5 text-[#8B1818] mr-2" />
-                          {highlight}
-                        </div>
-                      ))}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex-grow">
+                      <h3 className="text-3xl font-bold mb-2">{destination.title}</h3>
+                      <p className="text-xl text-gray-600 mb-4">{destination.description}</p>
+                      <div className="mb-4">
+                        <span className="text-lg font-semibold text-[#8B1818]">
+                          Duration: {destination.duration}
+                        </span>
+                      </div>
+                      <div className="space-y-2">
+                        {destination.highlights.map((highlight, i) => (
+                          <div key={i} className="flex items-center text-lg text-gray-600">
+                            <CheckCircle className="w-5 h-5 text-[#8B1818] mr-2 flex-shrink-0" />
+                            <span>{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     <Button 
-                      className="mt-6 bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg"
+                      className="mt-6 bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg w-full"
                       onClick={() => handleEnquire(destination.title)}
                     >
                       Enquire Now
