@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
-import { Linkedin, Mail, UserCircle2 } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 
 export default function Team() {
   return (
@@ -37,7 +37,14 @@ export default function Team() {
             <Card className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="flex justify-center items-center">
-                  <UserCircle2 className="w-64 h-64 text-[#8B1818]" />
+                  <div className="relative w-64 h-64 rounded-full overflow-hidden">
+                    <Image
+                      src="/images/ceo-image.jpg"
+                      alt="Tendai Kufa - CEO"
+                      fill
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
                 </div>
                 <div>
                   <h2 className="text-4xl font-bold mb-2 gradient-text">Tendai Kufa</h2>
