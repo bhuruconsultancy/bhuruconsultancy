@@ -17,16 +17,48 @@ export default function Enquire() {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success('Thank you for your enquiry! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      message: ''
-    });
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    if (!formData.email.includes('@')) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/enquire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit enquiry');
+      }
+
+      toast.success(data.message);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -134,6 +166,7 @@ export default function Enquire() {
                     required
                     className="w-full h-12 text-lg transition-all duration-200 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1818] focus:border-[#8B1818] hover:border-[#8B1818]"
                     placeholder="Enter your full name"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -150,6 +183,7 @@ export default function Enquire() {
                     required
                     className="w-full h-12 text-lg transition-all duration-200 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1818] focus:border-[#8B1818] hover:border-[#8B1818]"
                     placeholder="Enter your email address"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -166,6 +200,7 @@ export default function Enquire() {
                     required
                     className="w-full h-12 text-lg transition-all duration-200 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1818] focus:border-[#8B1818] hover:border-[#8B1818]"
                     placeholder="Enter your phone number"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -181,15 +216,17 @@ export default function Enquire() {
                     required
                     className="w-full min-h-[150px] text-lg transition-all duration-200 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B1818] focus:border-[#8B1818] hover:border-[#8B1818] resize-y"
                     placeholder="Tell us about your enquiry..."
+                    disabled={isSubmitting}
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg h-14 rounded-lg transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg h-14 rounded-lg transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   <Send className="w-5 h-5" />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </motion.div>

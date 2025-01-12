@@ -55,6 +55,15 @@ export default function About() {
         </div>
       </div>
 
+      {/* Registration Info */}
+      <section className="py-12 bg-[#8B1818] text-white">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-xl">
+            We are proudly registered in Zimbabwe and fully tax compliant, ensuring reliable and trustworthy services for all our clients.
+          </p>
+        </div>
+      </section>
+
       {/* Mission and Vision */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">

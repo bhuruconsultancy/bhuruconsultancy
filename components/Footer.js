@@ -1,9 +1,44 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { toast } from 'sonner';
 
 export function Footer() {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if (!email || !email.includes('@')) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Subscription failed');
+      }
+
+      toast.success(data.message);
+      setEmail('');
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const quickLinks = [
     { href: '/about', label: 'About Us' },
     { href: '/study-abroad', label: 'Study Abroad' },
@@ -65,7 +100,12 @@ export function Footer() {
           <div className="space-y-6">
             <h4 className="text-2xl font-semibold mb-6">Follow Us</h4>
             <div className="flex flex-wrap gap-6">
-              <a href="#" className="hover:text-[#E85D5D] transition-colors">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61571760030367" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-[#E85D5D] transition-colors"
+              >
                 <Facebook className="w-8 h-8" />
               </a>
               <a href="#" className="hover:text-[#E85D5D] transition-colors">
@@ -83,16 +123,23 @@ export function Footer() {
             </div>
             <div className="mt-6">
               <h5 className="text-xl font-semibold mb-4">Newsletter</h5>
-              <div className="flex flex-col gap-3">
+              <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
                 <input
                   type="email"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="px-4 py-3 rounded-lg text-gray-900 w-full text-lg"
+                  disabled={isSubmitting}
                 />
-                <button className="bg-[#E85D5D] px-8 py-3 rounded-lg hover:bg-[#8B1818] transition-colors text-lg w-full">
-                  Subscribe
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-[#E85D5D] px-8 py-3 rounded-lg hover:bg-[#8B1818] transition-colors text-lg w-full disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Subscribing...' : 'Subscribe'}
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>

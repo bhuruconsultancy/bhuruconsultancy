@@ -45,7 +45,34 @@ export default function RootLayout({ children }) {
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <Footer />
-        <Toaster />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: 'white',
+              color: 'black',
+              border: '1px solid #e2e8f0',
+              fontSize: '1rem',
+              padding: '1rem',
+            },
+            error: {
+              style: {
+                background: '#fee2e2',
+                border: '1px solid #ef4444',
+                color: '#991b1b',
+                fontWeight: 500,
+              },
+            },
+            success: {
+              style: {
+                background: '#dcfce7',
+                border: '1px solid #22c55e',
+                color: '#166534',
+                fontWeight: 500,
+              },
+            },
+          }}
+        />
       </body>
     </html>
   );

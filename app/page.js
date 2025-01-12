@@ -56,61 +56,93 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="pt-16">
       {/* Hero Carousel */}
-      <div className="relative h-[600px] overflow-hidden">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute w-full h-full transition-opacity duration-1000 ${
-              currentSlide === index ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <Image
-              src={slide.image}
-              alt={slide.title}
-              fill
-              style={{ objectFit: 'cover' }}
-              priority={index === 0}
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50">
-              <div className="max-w-7xl mx-auto px-4 h-full flex items-center">
-                <div className="text-white max-w-2xl">
-                  <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl font-bold mb-4"
-                  >
-                    {slide.title}
-                  </motion.h1>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-xl mb-8"
-                  >
-                    {slide.description}
-                  </motion.p>
-                  <Link href={slide.link}>
-                    <Button
-                      className="bg-[#8B1818] hover:bg-[#E85D5D] text-white"
-                      size="lg"
+      <div className="relative h-[600px] w-full overflow-hidden">
+        <div 
+          className="absolute top-0 left-0 flex h-full transition-transform duration-1000 ease-out"
+          style={{ 
+            width: `${slides.length * 100}%`,
+            transform: `translateX(-${(currentSlide * (100 / slides.length))}%)`
+          }}
+        >
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className="relative h-full"
+              style={{ width: `${100 / slides.length}%` }}
+            >
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                style={{ objectFit: 'cover' }}
+                priority={index === 0}
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50">
+                <div className="max-w-7xl mx-auto px-4 h-full flex items-center">
+                  <div className="text-white max-w-2xl">
+                    <motion.h1
+                      key={`${currentSlide}-title`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="text-5xl font-bold mb-4"
                     >
-                      Get Started
-                      <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
+                      {slide.title}
+                    </motion.h1>
+                    <motion.p
+                      key={`${currentSlide}-desc`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="text-xl mb-8"
+                    >
+                      {slide.description}
+                    </motion.p>
+                    <motion.div
+                      key={`${currentSlide}-button`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                      <Link href={slide.link}>
+                        <Button
+                          className="bg-[#8B1818] hover:bg-[#E85D5D] text-white"
+                          size="lg"
+                        >
+                          Get Started
+                          <ChevronRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                currentSlide === index ? 'bg-white w-8' : 'bg-white/50'
+              }`}
+              onClick={() => setCurrentSlide(index)}
+            />
+          ))}
+        </div>
       </div>
 
+      {/* Rest of the component remains the same */}
       {/* Services Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
