@@ -13,6 +13,41 @@ export default function StudyAbroad() {
 
   const countries = [
     {
+      name: "India",
+      description: "Experience quality education with affordable tuition rates and diverse academic programs - Free Admission!",
+      image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2071",
+      duration: "2-4 years",
+      requirements: {
+        undergraduate: [
+          "Valid passport",
+          "O-Level and A-Level certificates",
+          "English proficiency",
+          "Free admission",
+          "No agent fees",
+          "Optional: Airport pick up"
+        ],
+        masters: [
+          "Valid passport",
+          "Bachelor's degree certificate",
+          "Academic transcripts",
+          "English proficiency",
+          "Free admission",
+          "No agent fees",
+          "Optional: Airport pick up"
+        ],
+        phd: [
+          "Valid passport",
+          "Master's degree certificate",
+          "Academic transcripts",
+          "Research proposal",
+          "English proficiency",
+          "Free admission",
+          "No agent fees",
+          "Optional: Airport pick up"
+        ]
+      }
+    },
+    {
       name: "China",
       description: "Study in one of the world's fastest-growing economies with rich cultural heritage",
       image: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?q=80&w=2070",
@@ -90,7 +125,7 @@ export default function StudyAbroad() {
           "High school certificates",
           "English proficiency",
           "Free visa assistance",
-          "Agency fee $200",
+          "Agency fee $120",
           "Optional: Airport pick up"
         ],
         masters: [
@@ -99,7 +134,7 @@ export default function StudyAbroad() {
           "English proficiency",
           "Research proposal (if applicable)",
           "Free visa assistance",
-          "Agency fee $200",
+          "Agency fee $120",
           "Optional: Airport pick up"
         ],
         phd: [
@@ -109,7 +144,7 @@ export default function StudyAbroad() {
           "Detailed research proposal",
           "Publications (if any)",
           "Free visa assistance",
-          "Agency fee $200",
+          "Agency fee $120",
           "Optional: Airport pick up"
         ]
       }
@@ -231,7 +266,7 @@ export default function StudyAbroad() {
                                 {country.requirements[level].map((req, i) => (
                                   <li key={i} className="flex items-center text-lg">
                                     <CheckCircle className="w-5 h-5 text-[#8B1818] mr-2" />
-                                    {req}
+                                    <span>{req}</span>
                                   </li>
                                 ))}
                               </ul>
