@@ -27,7 +27,7 @@ export function Footer() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Subscription failed');
+        throw new Error(data.error || 'Failed to subscribe');
       }
 
       toast.success(data.message);
