@@ -91,7 +91,143 @@ export default function Enquire() {
 
   return (
     <div className="pt-16">
-      {/* Rest of the component remains the same */}
+      {/* Hero Section */}
+      <div className="relative h-[400px]">
+        <Image
+          src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069"
+          alt="Contact Us"
+          fill
+          style={{ objectFit: 'cover' }}
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="text-center text-white">
+            <h1 className="text-6xl font-bold mb-4">Contact Us</h1>
+            <p className="text-2xl max-w-2xl mx-auto">
+              Get in touch with our team for personalized assistance
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Information */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {contactInfo.map((info, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="p-8 text-center h-full card-hover">
+                  <div className="flex flex-col items-center">
+                    <div className="text-[#8B1818] mb-4">
+                      {info.icon}
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-2">{info.title}</h3>
+                    <a 
+                      href={info.link}
+                      className="text-lg text-gray-600 hover:text-[#8B1818] transition-colors"
+                    >
+                      {info.details}
+                    </a>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section className="py-20">
+        <div className="max-w-3xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card className="p-8">
+              <h2 className="text-3xl font-bold mb-8 text-center gradient-text">Send us a Message</h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full text-lg"
+                    placeholder="Enter your full name"
+                    disabled={isSubmitting}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full text-lg"
+                    placeholder="Enter your email address"
+                    disabled={isSubmitting}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number
+                  </label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full text-lg"
+                    placeholder="Enter your phone number"
+                    disabled={isSubmitting}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full text-lg min-h-[150px]"
+                    placeholder="How can we help you?"
+                    disabled={isSubmitting}
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full bg-[#8B1818] hover:bg-[#E85D5D] text-white text-lg py-6"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    'Sending...'
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="ml-2 h-5 w-5" />
+                    </>
+                  )}
+                </Button>
+              </form>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
