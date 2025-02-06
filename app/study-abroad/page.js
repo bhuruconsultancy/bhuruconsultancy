@@ -22,6 +22,7 @@ export default function StudyAbroad() {
           "Valid passport",
           "O-Level and A-Level certificates",
           "English proficiency",
+          "50% Scholarship on tuition fees",
           "Free admission",
           "No agent fees",
           "Optional: Airport pick up"
@@ -31,6 +32,7 @@ export default function StudyAbroad() {
           "Bachelor's degree certificate",
           "Academic transcripts",
           "English proficiency",
+          "50% Scholarship on tuition fees",
           "Free admission",
           "No agent fees",
           "Optional: Airport pick up"
@@ -41,6 +43,7 @@ export default function StudyAbroad() {
           "Academic transcripts",
           "Research proposal",
           "English proficiency",
+          "50% Scholarship on tuition fees",
           "Free admission",
           "No agent fees",
           "Optional: Airport pick up"
@@ -92,7 +95,7 @@ export default function StudyAbroad() {
           "High school certificates",
           "English proficiency",
           "Free visa assistance",
-          "Agency fee $200",
+          "Agency fee $150",
           "Optional: Airport pick up"
         ],
         masters: [
@@ -101,7 +104,7 @@ export default function StudyAbroad() {
           "English proficiency",
           "Research proposal (if applicable)",
           "Free visa assistance",
-          "Agency fee $200",
+          "Agency fee $150",
           "Optional: Airport pick up"
         ],
         phd: [
@@ -111,7 +114,7 @@ export default function StudyAbroad() {
           "Detailed research proposal",
           "Publications (if any)",
           "Free visa assistance",
-          "Agency fee $200",
+          "Agency fee $150",
           "Optional: Airport pick up"
         ]
       }
@@ -158,7 +161,7 @@ export default function StudyAbroad() {
           "High school certificates",
           "English/Polish proficiency",
           "Free visa assistance",
-          "Agency fee $200",
+          "No Agency fees",
           "Optional: Airport pick up"
         ],
         masters: [
@@ -167,7 +170,7 @@ export default function StudyAbroad() {
           "English/Polish proficiency",
           "Research proposal (if applicable)",
           "Free visa assistance",
-          "Agency fee $200",
+          "No Agency fees",
           "Optional: Airport pick up"
         ],
         phd: [
@@ -177,7 +180,7 @@ export default function StudyAbroad() {
           "Detailed research proposal",
           "Publications (if any)",
           "Free visa assistance",
-          "Agency fee $200",
+          "No Agency fees",
           "Optional: Airport pick up"
         ]
       }
