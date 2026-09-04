@@ -15,13 +15,13 @@ export default function Home() {
     {
       title: "Transform Your Future by Studying Abroad",
       description: "Open doors to world-class education opportunities across the globe",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070",
+      image: "/images/hero-study-abroad.jpg",
       link: "/study-abroad"
     },
     {
       title: "Professional Consultation Services",
       description: "Expert guidance for your career and educational journey",
-      image: "/images/hero-study-abroad.jpg",
+      image:  "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2070",
       link: "/consultancy-services"
     },
     {
