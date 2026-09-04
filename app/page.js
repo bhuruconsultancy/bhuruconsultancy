@@ -15,7 +15,7 @@ export default function Home() {
     {
       title: "Transform Your Future by Studying Abroad",
       description: "Open doors to world-class education opportunities across the globe",
-      image: "/images/hero-study-abroad.jpg",
+      image: "/images/hero-study-abroad.jpg.jpg",
       link: "/study-abroad"
     },
     {
