@@ -21,7 +21,7 @@ export default function Home() {
     {
       title: "Professional Consultation Services",
       description: "Expert guidance for your career and educational journey",
-      image: "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2070",
+      image: "/images/hero-study-abroad.jpg",
       link: "/consultancy-services"
     },
     {
