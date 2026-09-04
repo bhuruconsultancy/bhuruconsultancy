@@ -196,7 +196,7 @@ export default function StudyAbroad() {
       {/* Hero Section */}
       <div className="relative h-[500px]">
         <Image
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070"
+          src="/images/hero-study-abroad.jpg.jpg"
           alt="Study Abroad"
           fill
           style={{ objectFit: 'cover' }}
